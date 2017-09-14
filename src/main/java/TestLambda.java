@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 
 public class TestLambda {
 	public static void main(String[] args) {
-		Message.test("sss");
+		Message.test("ssss");
 		Message message = () -> {
 			System.out.println("111");
 			System.out.println("222");
