@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 
 public class TestLambda {
 	public static void main(String[] args) {
+		Message.test("sss");
 		Message message = () -> {
 			System.out.println("111");
 			System.out.println("222");
@@ -18,13 +19,13 @@ public class TestLambda {
 		Function<Integer, String> function = String::valueOf;
 		System.out.println(function.apply(1000));
 		//消费型
-		Consumer<String> consumer = System.out :: println;
+		Consumer<String> consumer = System.out::println;
 		consumer.accept("consumer");
 		//供给型
-		Supplier<String> supplier = "hello" :: toUpperCase;
+		Supplier<String> supplier = "hello"::toUpperCase;
 		System.out.println(supplier.get());
 		//断言型
-		Predicate<String> predicate = "##hello" :: startsWith;
+		Predicate<String> predicate = "##hello"::startsWith;
 		System.out.println(predicate.test("#"));
 	}
 }
@@ -32,6 +33,10 @@ public class TestLambda {
 @FunctionalInterface
 interface Message {
 	void print();
+
+	static void test(String string) {
+		System.out.println(string);
+	}
 }
 
 @FunctionalInterface
