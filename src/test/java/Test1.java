@@ -1,3 +1,4 @@
+import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
 import javax.script.ScriptEngine;
@@ -5,6 +6,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,5 +57,14 @@ public class Test1 {
 			}
 		});
 		executorService.shutdown();
+	}
+
+	@Test
+	public void testJson() {
+		String s = "{\"unsealed\":\"1\",\"payTime\":\"{\\\"type\\\":\\\"1\\\",\\\"value\\\":\\\"1\\\",\\\"unit\\\":\\\"2\\\"}\",\"shippingTime\":\"{\\\"type\\\":\\\"1\\\",\\\"value\\\":\\\"1\\\",\\\"unit\\\":\\\"2\\\"}\"}";
+		Map<String, String> map = JSON.parseObject(s, Map.class);
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+			System.out.println("key:" + entry.getKey() + "|value:" + entry.getValue());
+		}
 	}
 }
